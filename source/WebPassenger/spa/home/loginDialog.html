@@ -1,0 +1,47 @@
+﻿<div>
+    <form role="form" novalidate angular-validator name="phoneNumberForm" angular-validator-submit="">
+        <div class="form-group">
+            <label for="userName">Номер телефона</label>
+            <input kendo-masked-text-box
+                   ng-disabled="loginModel.codeHadSended"
+                   placeholder="+7(___)___-____"
+                   k-mask="'+7(999) 000-0000'"
+                   ng-model="loginModel.phoneNumber"
+                   k-unmask-on-post="true"
+                   id="phoneNumber" />
+        </div>
+        <div class="form-group">
+            <div class="row text-center">
+                <div class="col-lg-12 text-center">
+                    <button id="getCodeBtn" ng-click="phoneNumberForm.$valid && requestCode()"
+                            ng-disabled="loginModel.codeHadSended"
+                            class="btn btn-success">
+                        Получить код
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form ng-show="loginModel.codeHadSended" class="ng-hide" role="form" novalidate angular-validator name="codeForm" angular-validator-submit="">
+        <div class="form-group">
+            <div class="alert alert-info" role="alert">Введите полученный в SMS сообщении временный код</div>
+            <label for="userName">Код</label>
+            <input type="text"
+                   ng-model="loginModel.code"
+                   class="form-control"
+                   id="code"
+                   name="code"
+                   validate-on="blur"
+                   required required-message="'Введите код'" placeholder="Код">
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-6 text-center">
+                <button ng-click="codeForm.$valid && sendCode()" class="btn btn-success">Войти</button>
+            </div>
+            <div class="col-lg-6 text-center">
+                <button hotkey="{esc: cancel}" ng-click="cancel()" class="btn btn-default">Отмена</button>
+            </div>
+        </div>
+    </form>
+
+</div>

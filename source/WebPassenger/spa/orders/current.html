@@ -1,0 +1,48 @@
+﻿<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Просмотр текущего заказа № {{order.id}}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="estimatedPrice">Цена</label>
+                    <input disabled="disabled" type="text" id="estimatedPrice" class="form-control" ng-model="order.estimatedPrice">
+                </div>
+                <div class="form-group">
+                    <label for="startAddress">Начальный адрес</label>
+                    <input disabled="disabled" type="text" id="startAddress" class="form-control" ng-model="order.startAddress">
+                </div>
+                <div class="form-group">
+                    <label for="endAddress">Конечный адрес</label>
+                    <input disabled="disabled" type="text" id="endAddress" class="form-control" ng-model="order.endAddress">
+                </div>
+                <div class="form-group">
+                    <label for="stateName">Статус</label>
+                    <input disabled="disabled" type="text" id="stateName" class="form-control" ng-model="order.state.name">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-default">
+            <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'>
+                <ui-gmap-marker coords="marker.center" idkey="marker.id">
+                    <ui-gmap-window options="windowOptions">
+                        <div>
+                            <p>
+                                Дистанция: <b>{{distance}}</b>
+                            </p>
+                            <p>
+                                Продолжительность: <b>{{duration}}</b>
+                            </p>
+                        </div>
+
+                    </ui-gmap-window>
+                </ui-gmap-marker>
+                <ui-gmap-polyline ng-repeat="p in map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                                  geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'>
+                </ui-gmap-polyline>
+            </ui-gmap-google-map>
+        </div>
+
+    </div>
+</div>

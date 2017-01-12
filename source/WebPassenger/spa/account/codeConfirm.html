@@ -1,0 +1,24 @@
+﻿<div class="row">
+
+    <div class="panel panel-default form-signin">
+        <div class="panel-body">
+            <form class="" role="form" novalidate angular-validator name="userLoginForm" angular-validator-submit="confirm()">
+
+                <div class="alert alert-info" role="alert">Введите полученный в SMS сообщении временный код</div>
+
+                <div class="form-group">
+                    <label for="inputCode" class="sr-only">Укажите код подтверждения</label>
+                    <input type="text"
+                           id="inputCode"
+                           name="inputCode"
+                           class="form-control"
+                           ng-model="user.code"
+                           placeholder="Код подтверждения"
+                           validate-on="blur"
+                           required required-message="'Укажите код подтверждения'">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+</div>
